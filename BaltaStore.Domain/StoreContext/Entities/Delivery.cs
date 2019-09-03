@@ -1,4 +1,5 @@
 ﻿using BaltaStore.Domain.StoreContext.Enums;
+using FluentValidator;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Text;
 namespace BaltaStore.Domain.StoreContext.Entities
 
 {
-    public class Delivery
+    public class Delivery : Notifiable
     {
         public DateTime CreateDate { get; private set; }
         public DateTime EstimatedDeliveryDate { get; private set; }

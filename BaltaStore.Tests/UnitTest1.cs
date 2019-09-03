@@ -11,7 +11,7 @@ namespace BaltaStore.Tests
         public void TestMethod1()
         {
             //Customer
-            var name = new Name("Felipe", "Portela");
+            var name = new Name("F", "P");
             var document = new Document("12345678911");
             var email = new EmailAddress("felipe@teste.com");
             var customer = new Customer(name, document, email, "33333333");
@@ -21,10 +21,13 @@ namespace BaltaStore.Tests
 
             //Order
             var order = new Order(customer);
-            order.AddItem(new OrderItem(mouse, 5));
+            order.AddItem(mouse, 5M);
 
             //Realizar o pedido
             order.Place();
+
+            //Verificar se o pedido é valido
+            var valid = order.Valid;
 
             //Simular pagamento
             order.Pay();
