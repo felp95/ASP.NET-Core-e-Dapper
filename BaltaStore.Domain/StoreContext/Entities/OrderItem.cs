@@ -23,6 +23,7 @@ namespace BaltaStore.Domain.StoreContext.Entities
                 AddNotification("Produto", "Fora de estoque");
             }
 
+            product.DecreaseQuantity(quantity);
         }
 
         public override string ToString()
