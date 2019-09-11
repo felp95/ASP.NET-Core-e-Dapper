@@ -8,13 +8,13 @@ namespace BaltaStore.Tests.Entities
     [TestClass]
     public class OrderTests
     {
-        private Customer _customer;
-        private Order _order;
-        private Product _mouse;
-        private Product _teclado;
-        private Product _fone;
-        private Product _monitor;
-        private Product _cadeira;
+        private readonly Customer _customer;
+        private readonly Order _order;
+        private readonly Product _mouse;
+        private readonly Product _teclado;
+        private readonly Product _fone;
+        private readonly Product _monitor;
+        private readonly Product _cadeira;
 
         public OrderTests()
         {

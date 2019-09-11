@@ -17,7 +17,7 @@ namespace BaltaStore.Domain.StoreContext.ValueObjects
                   .HasMinLen(FirstName, 3, "FirstName", "O nome deve conter pelo menos 3 caracteres")
                   .HasMaxLen(FirstName, 40, "FirstName", "O Nome deve ter no máximo 40 caracteres")
                   .HasMinLen(LastName, 3, "LastName", "O sobrenome deve conter pelo menos 3 caracteres")
-                  .HasMaxLen(LastName, 40, "LastName", "O sobreome deve ter no máximo 40 caracteres"));
+                  .HasMaxLen(LastName, 40, "LastName", "O sobrenome deve ter no máximo 40 caracteres"));
         }
 
         public override string ToString()
