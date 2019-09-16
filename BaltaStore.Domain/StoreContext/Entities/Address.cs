@@ -1,9 +1,10 @@
 ﻿using BaltaStore.Domain.StoreContext.Enums;
+using BaltaStore.Shared.Entities;
 using FluentValidator;
 
 namespace BaltaStore.Domain.StoreContext.Entities
 {
-    public class Address : Notifiable
+    public class Address : Entity
     {
         public string Street { get; private set; }
         public string Neighborhood { get; private set; }

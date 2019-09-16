@@ -1,9 +1,10 @@
-﻿using FluentValidator;
+﻿using BaltaStore.Shared.Entities;
+using FluentValidator;
 
 namespace BaltaStore.Domain.StoreContext.Entities
 
 {
-    public class Product : Notifiable
+    public class Product : Entity
     {
         public string Title { get; private set; }
         public string Description { get; private set; }

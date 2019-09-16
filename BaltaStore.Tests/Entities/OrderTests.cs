@@ -8,7 +8,6 @@ namespace BaltaStore.Tests.Entities
     [TestClass]
     public class OrderTests
     {
-        private readonly Customer _customer;
         private readonly Order _order;
         private readonly Product _mouse;
         private readonly Product _teclado;
@@ -21,8 +20,8 @@ namespace BaltaStore.Tests.Entities
             var name = new Name("Felipe", "Portela");
             var document = new Document("10849737907");
             var email = new EmailAddress("felp95@gmail.com");
-            _customer = new Customer(name, document, email, "987176812");
-            _order = new Order(_customer);
+            var customer = new Customer(name, document, email, "987176812");
+            _order = new Order(customer);
             _mouse = new Product("Mouse", "Mouse Gamer", "image.jpg", 100M, 10M);
             _teclado = new Product("Teclado", "Teclado Gamer", "image.jpg", 100M, 10M);
             _fone = new Product("Fone", "Fone Gamer", "image.jpg", 100M, 10M);

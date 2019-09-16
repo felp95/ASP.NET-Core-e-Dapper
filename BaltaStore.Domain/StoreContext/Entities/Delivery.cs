@@ -3,11 +3,12 @@ using FluentValidator;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BaltaStore.Shared.Entities;
 
 namespace BaltaStore.Domain.StoreContext.Entities
 
 {
-    public class Delivery : Notifiable
+    public class Delivery : Entity
     {
         public DateTime CreateDate { get; private set; }
         public DateTime EstimatedDeliveryDate { get; private set; }
