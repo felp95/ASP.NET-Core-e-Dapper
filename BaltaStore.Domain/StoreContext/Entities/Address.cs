@@ -7,7 +7,7 @@ namespace BaltaStore.Domain.StoreContext.Entities
     public class Address : Entity
     {
         public string Street { get; private set; }
-        public string Neighborhood { get; private set; }
+        public string District { get; private set; }
         public int Number { get; private set; }
         public string Complement { get; set; }
         public string ZipCode { get; private set; }
@@ -16,10 +16,10 @@ namespace BaltaStore.Domain.StoreContext.Entities
         public string Country { get; private set; }
         public EAddressType Type { get; set; }
 
-        public Address(string street, string neighborhood, int number, string complement, string zipCode, string city, string state, string country, EAddressType type)
+        public Address(string street, string district, int number, string complement, string zipCode, string city, string state, string country, EAddressType type)
         {
             Street = street;
-            Neighborhood = neighborhood;
+            District = district;
             Number = number;
             Complement = complement;
             ZipCode = zipCode;
