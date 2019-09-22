@@ -1,4 +1,5 @@
-﻿using BaltaStore.Domain.StoreContext.ValueObjects;
+﻿using System;
+using BaltaStore.Domain.StoreContext.ValueObjects;
 using FluentValidator;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace BaltaStore.Domain.StoreContext.Entities
 
         public Customer(Name name, Document document, EmailAddress email, string phone)
         {
+            Id = Guid.NewGuid();
             Name = name;
             Document = document;
             Email = email;

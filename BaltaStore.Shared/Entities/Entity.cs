@@ -11,7 +11,7 @@ namespace BaltaStore.Shared.Entities
         }
         public Entity(Guid id)
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }

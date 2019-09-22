@@ -2,9 +2,10 @@
 using BaltaStore.Domain.StoreContext.Repositories;
 using BaltaStore.Infra.StoreContext.DataContexts;
 using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
+using BaltaStore.Domain.StoreContext.Queries;
 using Dapper;
 
 namespace BaltaStore.Infra.StoreContext.Repositories
@@ -60,6 +61,27 @@ namespace BaltaStore.Infra.StoreContext.Repositories
 
                     }, commandType: CommandType.StoredProcedure);
             }
+        }
+
+        public List<ListCustomerQueryResult> Get()
+        {
+            const string sql = "SELECT Id, CONCAT(FirstName, '', LastName) as Name, Document, Email FROM Customer";
+
+            return _context.Connection.Query<ListCustomerQueryResult>(sql, commandType: CommandType.StoredProcedure).ToList();
+        }
+
+        public GetCustomerQueryResult GetById(Guid id)
+        {
+            const string sql = "SELECT Id, CONCAT(FirstName, '', LastName) as Name, Document, Email FROM Customer WHERE Id = @id";
+
+            return _context.Connection.Query<GetCustomerQueryResult>(sql, new { Id = id }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+        }
+
+        public List<ListCustomerOrdersQueryResult> GetOrders(Guid id)
+        {
+            const string sql = "Fazer a query";
+
+            return _context.Connection.Query<ListCustomerOrdersQueryResult>(sql, new { Id = id }, commandType: CommandType.StoredProcedure).ToList();
         }
     }
 }
