@@ -3,6 +3,7 @@ using BaltaStore.Domain.StoreContext.Commands.CustomerCommands.Outputs;
 using BaltaStore.Domain.StoreContext.Handlers;
 using BaltaStore.Domain.StoreContext.Queries;
 using BaltaStore.Domain.StoreContext.Repositories;
+using BaltaStore.Shared.Commands;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace BaltaStore.Api.Controllers
         }
 
         [HttpGet]
-        [Route("v1/customers")]
+        [Route("api/v1/customers")]
         [ResponseCache(Duration = 60)]
         public List<ListCustomerQueryResult> Get()
         {
@@ -29,29 +30,35 @@ namespace BaltaStore.Api.Controllers
         }
 
         [HttpGet]
-        [Route("v1/customers/{id}")]
+        [Route("api/v1/customers/{id}")]
         public GetCustomerQueryResult GetById(Guid id)
         {
             return _repository.GetById(id);
         }
 
         [HttpGet]
-        [Route("v1/customers/{id}/orders")]
+        [Route("api/v1/customers/{id}/orders")]
         public List<ListCustomerOrdersQueryResult> Orders(Guid id)
         {
             return _repository.GetOrders(id);
         }
 
         [HttpPost]
-        [Route("v1/customers")]
-        public object Post([FromBody] CreateCustomerCommand command)
+        [Route("api/v1/customers")]
+        public ICommandResult Post([FromBody] CreateCustomerCommand command)
         {
             var result = (CreateCustomerCommandResult)_handler.Handle(command);
-
-            if (_handler.Invalid) return BadRequest(_handler.Notifications);
             
             return result;
         }
 
+        [HttpGet]
+        [Route("error")]
+        public string Error([FromBody] CreateCustomerCommand command)
+        {
+            throw new Exception("erro");
+
+            return "erro";
+        }
     }
 }

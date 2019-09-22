@@ -42,7 +42,7 @@ namespace BaltaStore.Domain.StoreContext.Handlers
             // Validar entidades e VOs
             AddNotifications(name, document, email, customer);
 
-            if (Invalid) return null;
+            if (Invalid) return new CommandResult(false, "Erro", Notifications);
 
             // Persistir o cliente
             _repository.Save(customer);
@@ -51,7 +51,7 @@ namespace BaltaStore.Domain.StoreContext.Handlers
             _emailService.SendEmail(email.Email, "felp95@gmail.com", "Titulo", "Corpo do email");
 
             // Retornar o resultado para a tela
-            return new CreateCustomerCommandResult(customer.Id, name.ToString(), email.Email);
+            return new CreateCustomerCommandResult(true, "Bem vindo ao balta store", new { customer.Id, customer.Name, customer.Email });
         }
 
         public ICommandResult Handle(CreateAddressCommand command)
